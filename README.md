@@ -55,6 +55,7 @@
 - 수정, 삭제는 복제된 모든 데이터가 수정, 삭제되어야 한다
 
 ![](https://github.com/qskeksq/FirebaseBasic/blob/master/NoSql%20%EA%B5%AC%EC%A1%B0.png)
+![](https://github.com/qskeksq/FirebaseBasic/blob/master/NoSql%20%EA%B5%AC%EC%A1%B02.png)
 
 ## 참고
 - 모든 로직은 서버쪽보다는 클라이언트 쪽에 분산시키는 것이 좋다. 클라이언트는 혼자 사용하고 서버는 여러 사람이 동시에 사용하기 때문에 부하를 서버에 두는 것은 좋지 않다.
