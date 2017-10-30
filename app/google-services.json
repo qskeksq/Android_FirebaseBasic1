@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "560786271221",
+    "firebase_url": "https://fc-basic.firebaseio.com",
+    "project_id": "fc-basic",
+    "storage_bucket": "fc-basic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560786271221:android:a46863576a2b6b25",
+        "android_client_info": {
+          "package_name": "com.example.administrator.firebasebasic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560786271221-4j5huv5ks1oa92r5busmrnc8aa14lo6p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChEcDcK-LjQXiayPK8p4MeIizXc2ZOFpk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
