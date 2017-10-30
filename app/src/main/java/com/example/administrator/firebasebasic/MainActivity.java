@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements UserAdapter.Callb
             // 전체 유저 정보
             List<User> userList = new ArrayList<>();
             // 이미 id 레퍼런스를 참조한 상태에서 스냅샷을 찍기 때문에 바로 데이터로 넘어올 수 있다
+
             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                 // 1. user_id
                 String user_id = snapshot.getKey();

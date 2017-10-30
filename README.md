@@ -35,7 +35,7 @@
     - Remote Config
         - 사용자에게 설치된 앱 조작
 
-- 수등으로 파이어베이스 추가하기
+- 수동으로 파이어베이스 추가하기
     - 1. json 파일 안드로이드에 설치(project 파일이 아니라 /app에 추가해야 함)
     - 2. 그래들 2개 추가
 
@@ -54,7 +54,7 @@
 - 다만 #가 있는 모든 데이터가 tags에 복제되어야 하기 때문에 데이터 양은 8배 10배 늘어날 수 있다. 즉, 원 데이터를 태그(키)로 검색할 수 있도록 필요한 곳마다 복제를 되어야 한다. 
 - 수정, 삭제는 복제된 모든 데이터가 수정, 삭제되어야 한다
 
-![]()
+![](https://github.com/qskeksq/FirebaseBasic/blob/master/NoSql%20%EA%B5%AC%EC%A1%B0.png)
 
 ### 초기화
 
@@ -66,7 +66,7 @@ private void initFireBase(){
 }
 ```
 
-### 사용자 정보 저장
+### User 데이터 저장
 ```java
 public void signup(View view) {
 
@@ -80,8 +80,10 @@ public void signup(View view) {
 }
 ```
 
-### 사용자 계정으로 글 저장
-- 사용자 계정에 저장
+### Bbs 데이터 저장
+- push().getKey()를 통해 노드(키) 생성
+- 레퍼런스의 child().child().child()를 통해 원하는 하위 데이터까지 찾아간다
+- 사용자 계정(User)에도 저장한다. 이는 '값'으로 데이터를 검색할 수 없기 때문에 필요한 곳에 모든 데이터를 복사해서 저장하는 것이다
 - 따로 Bbs 레퍼런스에 저장
 
 ```java
@@ -104,11 +106,14 @@ public void post(View view) {
 ```
 
 
-### 유저 정보 변경
+### ValueEventListener1 - User 데이터 변경 이벤트
 - 초기 세팅시 호출
 - 데이터 변경시 호출
+- 지정한 child('키')까지 내려간 다음 스냅샷을 찍어 리턴, 리턴된 스냅샷에서 getKey(), getValue(), getChildren()을 통해 키, 값을 바로 꺼내거나 추가로 하위 데이터를 꺼내 사용한다
 - snapshot.getKey();   id 리턴(키)
 - snapshot.getValue();  id 를 제외한 데이터셋(값)
+- snapshot.getChildren();   바로 데이터를 꺼내지 않고 하위의 데이터로 이동. 여기서 다시 DataSnapShot을 꺼낼 수 있다.
+
 
 ```java
 ValueEventListener userValueEventListener = new ValueEventListener() {
@@ -154,7 +159,7 @@ ValueEventListener userValueEventListener = new ValueEventListener() {
     }
 };
 ```
-### 글 정보 변경
+### ValueEventListener2 - Bbs 데이터 변경 이벤트
 - 초기 세팅시 호출
 - 데이터 변경시 호출
 - 위의 ValueEventListener 와 같이 초기에 세팅이 되기 때문에 굳이 위에서 글 목록을 불러올 필요 없음
