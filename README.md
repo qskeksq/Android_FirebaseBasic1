@@ -56,6 +56,9 @@
 
 ![](https://github.com/qskeksq/FirebaseBasic/blob/master/NoSql%20%EA%B5%AC%EC%A1%B0.png)
 
+## 참고
+- 모든 로직은 서버쪽보다는 클라이언트 쪽에 분산시키는 것이 좋다. 클라이언트는 혼자 사용하고 서버는 여러 사람이 동시에 사용하기 때문에 부하를 서버에 두는 것은 좋지 않다.
+
 ### 초기화
 
 ```java
@@ -67,6 +70,7 @@ private void initFireBase(){
 ```
 
 ### User 데이터 저장
+
 ```java
 public void signup(View view) {
 
@@ -79,6 +83,25 @@ public void signup(View view) {
     userRef.child(id).setValue(user);
 }
 ```
+> user의 키 값을 id로 하지 않고 이메일로 처리할 수 있다.
+
+```java
+
+// 도메인에서는 이 값이 들어갈지 말지를 결정하는 유효성 검사를 해 주는 것이고
+// 값을 바꿔주거나 다른 값의 체크는 프레젠터 영역에서 해 준다.
+
+public String replaceEmailComma(String email){
+    return email.replace(".", "_comma_");
+}
+
+public String recoverEmailComma(String convertedEmail){
+    return convertedEmail.replace("_comma_", ".");
+}
+
+String chileKey = replaceEmailComma(user.getEmail()); 
+userRef.child(chileKey).setValue(user);
+```
+
 
 ### Bbs 데이터 저장
 - push().getKey()를 통해 노드(키) 생성
