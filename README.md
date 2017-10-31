@@ -60,7 +60,7 @@
 ## 참고
 - 모든 로직은 서버쪽보다는 클라이언트 쪽에 분산시키는 것이 좋다. 클라이언트는 혼자 사용하고 서버는 여러 사람이 동시에 사용하기 때문에 부하를 서버에 두는 것은 좋지 않다.
 
-### 초기화
+### (1) 초기화
 
 ```java
 private void initFireBase(){
@@ -70,7 +70,7 @@ private void initFireBase(){
 }
 ```
 
-### User 데이터 저장
+### (2) User 데이터 저장
 
 ```java
 public void signup(View view) {
@@ -104,7 +104,7 @@ userRef.child(chileKey).setValue(user);
 ```
 
 
-### Bbs 데이터 저장
+### (3) Bbs 데이터 저장
 - push().getKey()를 통해 노드(키) 생성
 - 레퍼런스의 child().child().child()를 통해 원하는 하위 데이터까지 찾아간다
 - 사용자 계정(User)에도 저장한다. 이는 '값'으로 데이터를 검색할 수 없기 때문에 필요한 곳에 모든 데이터를 복사해서 저장하는 것이다
@@ -130,7 +130,7 @@ public void post(View view) {
 ```
 
 
-### ValueEventListener1 - User 데이터 변경 이벤트
+### (4) ValueEventListener1 - User 데이터 변경 이벤트
 - 초기 세팅시 호출
 - 데이터 변경시 호출
 - 지정한 child('키')까지 내려간 다음 스냅샷을 찍어 리턴, 리턴된 스냅샷에서 getKey(), getValue(), getChildren()을 통해 키, 값을 바로 꺼내거나 추가로 하위 데이터를 꺼내 사용한다
@@ -183,7 +183,7 @@ ValueEventListener userValueEventListener = new ValueEventListener() {
     }
 };
 ```
-### ValueEventListener2 - Bbs 데이터 변경 이벤트
+### (5) ValueEventListener2 - Bbs 데이터 변경 이벤트
 - 초기 세팅시 호출
 - 데이터 변경시 호출
 - 위의 ValueEventListener 와 같이 초기에 세팅이 되기 때문에 굳이 위에서 글 목록을 불러올 필요 없음
