@@ -1,4 +1,4 @@
-# FireBase basics
+# FireBase Realtime Database
 - 실시간 유저 정보 추가, 유저에 따른 글 목록 변경
 
 - Backend를 서비스 하는 방법
